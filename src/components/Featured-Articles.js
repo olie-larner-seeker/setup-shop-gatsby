@@ -1,19 +1,19 @@
-import React from "react";
-import { CarouselProvider, Slider, Slide } from "pure-react-carousel";
-import "pure-react-carousel/dist/react-carousel.es.css";
-import useWindowSize from "../utils/useWindowSize";
+import React from "react"
+import { CarouselProvider, Slider, Slide } from "pure-react-carousel"
+import "pure-react-carousel/dist/react-carousel.es.css"
+import useWindowSize from "../utils/useWindowSize"
 
-const FeaturedArticles = (data) => {
-  const { featuredArticles } = data.featuredArticles;
+const FeaturedArticles = data => {
+  const { featuredArticles } = data.featuredArticles
 
-  const screenWidth = useWindowSize();
+  const screenWidth = useWindowSize()
 
   const numberOfSlide = () => {
     if (screenWidth.width <= 640) {
-      return 1;
+      return 1
     }
-    return 3;
-  };
+    return 3
+  }
 
   return (
     <CarouselProvider
@@ -36,16 +36,16 @@ const FeaturedArticles = (data) => {
               <p className="pb-1 text-lg">Article</p>
               <a
                 className="inline-block w-7/12 text-xl font-bold leading-tight"
-                href={`/post/${article.slug}`}
+                href={`/${article.slug}`}
               >
                 {article.title}
               </a>
             </Slide>
-          );
+          )
         })}
       </Slider>
     </CarouselProvider>
-  );
-};
+  )
+}
 
-export default FeaturedArticles;
+export default FeaturedArticles
