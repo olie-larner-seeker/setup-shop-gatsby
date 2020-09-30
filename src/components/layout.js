@@ -10,6 +10,7 @@ import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Footer from "./Footer"
+import Header from "./header"
 
 import "../styles/tailwind.css"
 
@@ -27,6 +28,7 @@ const Layout = ({ children }) => {
   return (
     <>
       <div>
+        <Header />
         <main>{children}</main>
         <Footer />
       </div>

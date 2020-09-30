@@ -1,5 +1,6 @@
 import React from "react"
 import Img from "gatsby-image"
+import { useStaticQuery, graphql } from "gatsby"
 
 import Cta from "./Cta"
 import CtaHelper from "../utils/ctaHelper"
@@ -22,12 +23,23 @@ const Hero = data => {
     )
   }
 
+  const imageData = useStaticQuery(graphql`
+    query {
+      placeholderImage: file(relativePath: { eq: "setup-hero.jpg" }) {
+        childImageSharp {
+          fluid(maxWidth: 2000) {
+            ...GatsbyImageSharpFluid
+          }
+        }
+      }
+    }
+  `)
+
   return (
-    <div
-      className="relative flex w-full min-h-screen bg-center bg-cover"
-      style={{ backgroundImage: `url(${image.sourceUrl})` }}
-    >
-      <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-25"></div>
+    <div className="relative flex w-full min-h-screen overflow-hidden bg-center bg-cover">
+      <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-25">
+        <Img fluid={imageData.placeholderImage.childImageSharp.fluid} />
+      </div>
       <div className="container z-10 flex flex-col justify-center mx-auto">
         <div className="w-full max-w-screen-md pt-32 mx-auto text-center text-white sm:pt-48 ">
           <h1
