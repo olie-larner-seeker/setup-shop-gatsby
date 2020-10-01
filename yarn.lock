@@ -7007,6 +7007,11 @@ gatsby-telemetry@^1.3.37:
     node-fetch "^2.6.0"
     uuid "3.4.0"
 
+gatsby-theme-apollo@^3.0.3:
+  version "3.0.3"
+  resolved "https://registry.yarnpkg.com/gatsby-theme-apollo/-/gatsby-theme-apollo-3.0.3.tgz#c6bfa9d9cd3e851f7db70053a73a3c5dee7bbd9f"
+  integrity sha512-8xHI93SypSHu4y1BbvhJE1sqFQEw1QR7zFPVdZGBcgmiSh5Nbkvf4PBisV/Iiia7NiekiXEne5sCSCK5mu/oRA==
+
 gatsby-transformer-sharp@^2.5.15:
   version "2.5.16"
   resolved "https://registry.yarnpkg.com/gatsby-transformer-sharp/-/gatsby-transformer-sharp-2.5.16.tgz#1c09fd81160078794160f0c5486dc9d383723b5a"
@@ -8319,6 +8324,11 @@ inquirer@^7.0.0:
     string-width "^4.1.0"
     strip-ansi "^6.0.0"
     through "^2.3.6"
+
+install@^0.13.0:
+  version "0.13.0"
+  resolved "https://registry.yarnpkg.com/install/-/install-0.13.0.tgz#6af6e9da9dd0987de2ab420f78e60d9c17260776"
+  integrity sha512-zDml/jzr2PKU9I8J/xyZBQn8rPCAY//UOYNmR01XwNwyfhEWObo2SWfSl1+0tm1u6PhxLwDnfsT/6jB7OUxqFA==
 
 internal-ip@^4.3.0:
   version "4.3.0"
