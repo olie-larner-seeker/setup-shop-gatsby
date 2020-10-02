@@ -1,3 +1,12 @@
+const uri = () => {
+  if (window.location.hostname === "localhost") {
+    return "http://localhost:8888/Setup_Shop/setup-shop-be/graphql"
+  }
+  if (window.location.hostname === "develop.dldoq5hxs3lte.amplifyapp.com") {
+    return "https://wordpress-458085-1446350.cloudwaysapps.com/graphql"
+  }
+}
+
 module.exports = {
   siteMetadata: {
     title: `Gatsby Default Starter`,
@@ -43,13 +52,13 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress-experimental`,
       options: {
-        url: `http://localhost:8888/Setup_Shop/setup-shop-be/graphql`,
+        url: "https://wordpress-458085-1446350.cloudwaysapps.com/graphql",
       },
     },
     {
       resolve: "gatsby-plugin-apollo",
       options: {
-        uri: "http://localhost:8888/Setup_Shop/setup-shop-be/graphql",
+        uri: "https://wordpress-458085-1446350.cloudwaysapps.com/graphql",
       },
     },
     `gatsby-plugin-next-seo`,
