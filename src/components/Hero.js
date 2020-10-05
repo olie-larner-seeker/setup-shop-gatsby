@@ -24,16 +24,51 @@ const Hero = data => {
   }
 
   const imageData = useStaticQuery(graphql`
-    query {
-      placeholderImage: file(relativePath: { eq: "setup-hero.jpg" }) {
-        childImageSharp {
-          fluid(maxWidth: 2000) {
-            ...GatsbyImageSharpFluid
+    query MyQuery($parentId: IDQueryOperatorInput = {}) {
+      allWpPage(
+        filter: {
+          parentId: $parentId
+          blocks: { elemMatch: { name: { eq: "acf/hero" } } }
+        }
+      ) {
+        nodes {
+          blocks {
+            ... on WpAcfHeroBlock {
+              hero {
+                image {
+                  sourceUrl
+                  localFile {
+                    publicURL
+                    childImageSharp {
+                      fluid(maxWidth: 2000) {
+                        ...GatsbyImageSharpFluid
+                      }
+                    }
+                  }
+                }
+              }
+            }
           }
         }
       }
     }
   `)
+
+  let heroSrc
+
+  const heroImage = () => {
+    imageData.allWpPage.nodes.map(list => {
+      list.blocks.map(item => {
+        if (item.__typename === "WpAcfHeroBlock") {
+          heroSrc = item.hero.image.localFile.childImageSharp.fluid
+          return ""
+        }
+        return null
+      })
+    })
+  }
+
+  heroImage()
 
   return (
     <div className="relative flex w-full min-h-screen overflow-hidden bg-center bg-cover">
@@ -42,7 +77,7 @@ const Hero = data => {
           objectFit="cover"
           objectPosition="50% 50%"
           style={{ height: "100%" }}
-          fluid={imageData.placeholderImage.childImageSharp.fluid}
+          fluid={heroSrc}
         />
       </div>
       <div className="container z-10 flex flex-col justify-center mx-auto">
