@@ -78,9 +78,6 @@ const FeaturedArticles = data => {
     >
       <Slider className="overflow-hidden slider-height">
         {articleImages.map((article, key) => {
-          console.log(
-            article.featuredImage.node.localFile.childImageSharp.fluid
-          )
           return (
             <Slide
               key={key}
