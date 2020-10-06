@@ -93,7 +93,7 @@ const Header = () => {
           {data.menuItems.edges.map((item, key) => {
             let url
             if (item.node.connectedNode.node.__typename === "Post") {
-              url = `/post/${item.node.connectedNode.node.slug}`
+              url = `/${item.node.connectedNode.node.slug}`
             }
             if (item.node.connectedNode.node.__typename === "Page") {
               url = `/${item.node.connectedNode.node.slug}`
