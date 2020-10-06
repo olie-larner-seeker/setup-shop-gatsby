@@ -1,9 +1,12 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { CarouselProvider, Slider, Slide } from "pure-react-carousel"
 import "pure-react-carousel/dist/react-carousel.es.css"
 import useWindowSize from "../utils/useWindowSize"
+import Img from "gatsby-image"
+import { useStaticQuery, graphql } from "gatsby"
 
 const FeaturedArticles = data => {
+  const [articleImages, setArticleImages] = useState([])
   const { featuredArticles } = data.featuredArticles
 
   const screenWidth = useWindowSize()
@@ -15,6 +18,57 @@ const FeaturedArticles = data => {
     return 3
   }
 
+  const imageData = useStaticQuery(graphql`
+    query featuredStoryQuery($parentId: IDQueryOperatorInput = {}) {
+      allWpPage(
+        filter: {
+          parentId: $parentId
+          blocks: { elemMatch: { name: { eq: "acf/featured-articles" } } }
+        }
+      ) {
+        nodes {
+          slug
+          id
+          blocks {
+            ... on WpAcfFeaturedArticlesBlock {
+              featuredArticles {
+                featuredArticles {
+                  ... on WpPost {
+                    id
+                    featuredImage {
+                      node {
+                        localFile {
+                          publicURL
+                          childImageSharp {
+                            fluid(maxWidth: 2000) {
+                              ...GatsbyImageSharpFluid
+                            }
+                          }
+                        }
+                      }
+                    }
+                    slug
+                    title
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `)
+
+  useEffect(() => {
+    imageData.allWpPage.nodes.map(item => {
+      item.blocks.map(block => {
+        if (block.__typename === "WpAcfFeaturedArticlesBlock") {
+          setArticleImages(block.featuredArticles.featuredArticles)
+        }
+      })
+    })
+  })
+
   return (
     <CarouselProvider
       naturalSlideWidth={100}
@@ -23,19 +77,30 @@ const FeaturedArticles = data => {
       visibleSlides={numberOfSlide()}
     >
       <Slider className="overflow-hidden slider-height">
-        {featuredArticles.map((article, key) => {
+        {articleImages.map((article, key) => {
+          console.log(
+            article.featuredImage.node.localFile.childImageSharp.fluid
+          )
           return (
             <Slide
               key={key}
-              className="w-full text-white bg-center bg-cover sm:w-1/3 h-halfscreen"
-              style={{
-                backgroundImage: `url(${article.featuredImage.node.sourceUrl})`,
-              }}
+              className="relative w-full text-white bg-center bg-cover sm:w-1/3 h-halfscreen"
               innerClassName="p-12"
             >
-              <p className="pb-1 text-lg">Article</p>
+              <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-25">
+                <Img
+                  objectFit="cover"
+                  objectPosition="50% 50%"
+                  style={{ height: "100%" }}
+                  fluid={
+                    article.featuredImage.node.localFile.childImageSharp.fluid
+                  }
+                />
+              </div>
+
+              <p className="relative z-10 pb-1 text-lg">Article</p>
               <a
-                className="inline-block w-7/12 text-xl font-bold leading-tight"
+                className="relative z-10 inline-block w-7/12 text-xl font-bold leading-tight"
                 href={`/${article.slug}`}
               >
                 {article.title}

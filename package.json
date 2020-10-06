@@ -20,6 +20,7 @@
     "gatsby-plugin-tailwindcss": "^1.0.3",
     "gatsby-source-filesystem": "^2.3.30",
     "gatsby-source-graphql": "^2.7.4",
+    "gatsby-source-wordpress": "^3.3.37",
     "gatsby-source-wordpress-experimental": "^1.4.1",
     "gatsby-theme-apollo": "^3.0.3",
     "gatsby-transformer-sharp": "^2.5.16",
