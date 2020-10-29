@@ -27,7 +27,8 @@ const Features = (data) => {
     );
   };
   return (
-    <div className="w-full max-w-screen-xl py-16 mx-auto">
+    <div className="w-full py-16 mx-auto bg-lightGray">
+      <div className="max-w-screen-xl mx-auto">
       <div className="flex flex-col w-11/12 mx-auto sm:block">
         <h1
           className="w-full mx-auto text-4xl leading-snug text-center features-headline"
@@ -60,6 +61,7 @@ const Features = (data) => {
           </CarouselProvider>
         </div>
       </div>
+    </div>
     </div>
   );
 };

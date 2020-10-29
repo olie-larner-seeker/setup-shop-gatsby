@@ -52,6 +52,7 @@ const GetToKnow = params => {
 return (
     <div className="container mx-auto">
        {imageArray.length !== 0 && <div className="w-10/12 mx-auto">
+<h2 className="pt-20 text-center ">{getToKnow.gtkTitle}</h2>
           {getToKnow.gtkFeature.map((feat, i) => {
               console.log(imageArray);
               return(
