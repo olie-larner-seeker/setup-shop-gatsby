@@ -23,6 +23,11 @@ module.exports = {
       black: "#000",
       white: "#fff",
       brandteal: "#10D5FF",
+      brandOrange: "#ec8153",
+      mainGray: "#3f3e3e",
+      lightGray: "#f8f8f8",
+      lightOrange: "#fdf6f3",
+      lightBlue: "#f8f9ff",
 
       gray: {
         100: "#f7fafc",

@@ -3,12 +3,14 @@ import Hero from "../components/Hero";
 import Features from "../components/Features";
 import CaseStudy from "../components/Case-Study";
 import FeaturedArticles from "../components/Featured-Articles";
+import GetToKnow from "../components/Get-To-Know";
 
 const blockMapping = {
   AcfHeroBlock: Hero,
   AcfFeaturesBlock: Features,
   AcfCaseStudyBannerBlock: CaseStudy,
   AcfFeaturedArticlesBlock: FeaturedArticles,
+  AcfGetToKnowBlock: GetToKnow,
 };
 
 function mapBlocksToComponents(post) {

@@ -13,13 +13,14 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    `gatsby-plugin-graphql-loader`
     `gatsby-plugin-tailwindcss`,
     `gatsby-plugin-postcss`,
     {
       resolve: `gatsby-plugin-purgecss`,
       options: {
         printRejected: true, // Print removed selectors and processed file names
-        develop: true, // Enable while using `gatsby develop`
+        develop: false, // Enable while using `gatsby develop`
         tailwind: true, // Enable tailwindcss support
         // whitelist: ['whitelist'], // Don't remove this selector
         ignore: ["/react-carousel.es.css"], // Ignore files/folders
@@ -53,13 +54,13 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress-experimental`,
       options: {
-        url: "https://wordpress-458085-1446350.cloudwaysapps.com/graphql",
+        url: "http://localhost:8888/Setup_Shop/setup-shop-be/graphql",
       },
     },
     {
       resolve: "gatsby-plugin-apollo",
       options: {
-        uri: "https://wordpress-458085-1446350.cloudwaysapps.com/graphql",
+        uri: "http://localhost:8888/Setup_Shop/setup-shop-be/graphql",
       },
     },
     `gatsby-plugin-next-seo`,

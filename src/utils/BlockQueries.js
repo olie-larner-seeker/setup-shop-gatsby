@@ -90,6 +90,18 @@ function getBlockDefinitions() {
         }
       }
     }
+
+    ... on AcfGetToKnowBlock {
+      getToKnow {
+        gtkTitle
+        gtkFeature {
+          gtkBackgroundColour
+          gtkCopy
+          gtkHeading
+        }
+      }
+    }
+
   }
       `;
 }

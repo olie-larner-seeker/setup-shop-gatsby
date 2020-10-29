@@ -1,4 +1,12 @@
 import React from "react";
+import {
+  CarouselProvider,
+  Slider,
+  Slide,
+  ButtonBack,
+  ButtonNext,
+  DotGroup,
+} from 'pure-react-carousel';
 import Cta from "./Cta";
 import CtaHelper from "../utils/ctaHelper";
 
@@ -20,23 +28,36 @@ const Features = (data) => {
   };
   return (
     <div className="w-full max-w-screen-xl py-16 mx-auto">
-      <div className="flex flex-col w-11/12 mx-auto sm:flex-row">
+      <div className="flex flex-col w-11/12 mx-auto sm:block">
         <h1
-          className="w-full text-2xl leading-snug sm:text-5xl sm:w-2/5 features-headline"
+          className="w-full mx-auto text-4xl leading-snug text-center features-headline"
           dangerouslySetInnerHTML={{ __html: intro }}
         />
-        <div className="grid w-full grid-flow-row grid-cols-1 sm:pl-10 sm:gap-6 sm:grid-cols-2 sm:grid-rows-3 sm:w-3/5">
+        <div className="w-full mx-auto sm:w-10/12">
+        <CarouselProvider
+          naturalSlideWidth={100}
+          naturalSlideHeight={100}
+          totalSlides={feature.length}
+          visibleSlides={3}
+          isIntrinsicHeight={true}
+        >
+          <Slider
+          >
           {feature.map((item, key) => {
             return (
-              <div className="table h-full my-6 sm:my-0" key={key}>
+              <Slide key={key}>
+              <div className="table h-full px-4 my-0" >
                 <div className="table-cell align-middle">
                   <h3 className="pb-4 uppercase">{item.title}</h3>
                   <p className="pb-6 text-sm">{item.blurb}</p>
                   {renderCta(item)}
                 </div>
               </div>
+              </Slide>
             );
           })}
+          </Slider>
+          </CarouselProvider>
         </div>
       </div>
     </div>

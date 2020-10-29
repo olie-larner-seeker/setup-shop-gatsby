@@ -34,26 +34,6 @@ exports.createPages = ({ graphql, actions }) => {
       throw result.errors
     }
 
-    // Create blog post pages.
-    result.data.allWpPage.edges.forEach(edge => {
-      createPage({
-        // Path for this page — required
-        path: `/${edge.node.slug}`,
-        component: blogPageTemplate,
-        context: {
-          slug: edge.node.slug,
-          title: edge.node.title,
-          // Add optional context data to be inserted
-          // as props into the page component..
-          //
-          // The context data can also be used as
-          // arguments to the page GraphQL query.
-          //
-          // The page "path" is always available as a GraphQL
-          // argument.
-        },
-      })
-    }),
       // Create blog post pages.
       result.data.allWpPost.edges.forEach(edge => {
         createPage({
