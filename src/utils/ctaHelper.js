@@ -16,6 +16,12 @@ const blueCta = {
   border: "border border-solid border-brandteal rounded-full",
 };
 
+const orangeCta = {
+  bgcolor: "bg-brandOrange",
+  textColor: "text-white",
+  border: "border border-solid border-brandOrange rounded-full",
+}
+
 function CtaHelper({ style } = {}) {
   let styles = {};
   if (style === "clear-blue") {
@@ -24,6 +30,8 @@ function CtaHelper({ style } = {}) {
     styles = { ...blueCta };
   } else if (style === "clear-white") {
     styles = { ...clearWhiteCta };
+  } else if (style === "orange") {
+    styles = { ...orangeCta };
   }
 
   return styles;

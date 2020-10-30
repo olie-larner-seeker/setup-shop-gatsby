@@ -91,6 +91,25 @@ function getBlockDefinitions() {
       }
     }
 
+    ... on AcfSlideHeroBlock {
+      slideHero {
+        slides {
+          ... on Post {
+            id
+            slug
+            title(format: RENDERED)
+            categories {
+              edges {
+                node {
+                  name
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+
     ... on AcfGetToKnowBlock {
       getToKnow {
         gtkTitle

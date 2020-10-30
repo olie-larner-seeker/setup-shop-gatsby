@@ -13,7 +13,6 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-plugin-graphql-loader`
     `gatsby-plugin-tailwindcss`,
     `gatsby-plugin-postcss`,
     {

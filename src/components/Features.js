@@ -3,9 +3,6 @@ import {
   CarouselProvider,
   Slider,
   Slide,
-  ButtonBack,
-  ButtonNext,
-  DotGroup,
 } from 'pure-react-carousel';
 import Cta from "./Cta";
 import CtaHelper from "../utils/ctaHelper";
