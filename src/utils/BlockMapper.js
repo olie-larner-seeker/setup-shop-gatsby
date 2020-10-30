@@ -5,6 +5,8 @@ import CaseStudy from "../components/Case-Study";
 import FeaturedArticles from "../components/Featured-Articles";
 import GetToKnow from "../components/Get-To-Know";
 import SlideHero from "../components/Slide-Hero";
+import Paragraph from "../components/Core/Paragraph";
+import Image from "../components/Core/Image";
 
 const blockMapping = {
   AcfHeroBlock: Hero,
@@ -13,6 +15,9 @@ const blockMapping = {
   AcfFeaturedArticlesBlock: FeaturedArticles,
   AcfGetToKnowBlock: GetToKnow,
   AcfSlideHeroBlock: SlideHero,
+  CoreParagraphBlock: Paragraph,
+  CoreHeadingBlock: Paragraph,
+  CoreImageBlock: Image,
 };
 
 function mapBlocksToComponents(post) {

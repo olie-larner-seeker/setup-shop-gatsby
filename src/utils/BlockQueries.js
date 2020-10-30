@@ -121,6 +121,50 @@ function getBlockDefinitions() {
       }
     }
 
+    ... on AcfRelatedPostsBlock {
+      relatedPosts {
+        relatedPosts {
+          ... on Post {
+            id
+            featuredImage {
+              node {
+                sourceUrl(size: LARGE)
+              }
+            }
+            title(format: RENDERED)
+            slug
+          }
+        }
+      }
+    }
+
+    ... on CoreImageBlock {
+      attributes {
+        ... on CoreImageBlockAttributes {
+          alt
+          align
+          width
+          url
+        }
+      }
+    }
+    ... on CoreParagraphBlock {
+      originalContent
+      attributes {
+        ... on CoreParagraphBlockAttributes {
+          align
+        }
+      }
+    }
+    ... on CoreHeadingBlock {
+      originalContent
+      attributes {
+        ... on CoreHeadingBlockAttributes {
+          align
+        }
+      }
+    }
+
   }
       `;
 }

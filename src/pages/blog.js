@@ -67,7 +67,7 @@ export default () => {
                   }
                   return (
                       <div key={i}>
-                          <div style={{backgroundImage: `url(${post.node.featuredImage.node.sourceUrl})`, height: "319px"}} className="w-full" />
+                          <div style={{backgroundImage: `url(${post.node.featuredImage.node.sourceUrl})`, height: "319px", boxShadow: "0 6px 9px 0 rgba(201, 201, 201, 0.5)"}} className="w-full" />
                           <div className="py-8">
                           <p className="text-sm font-bold text-brandOrange">{catagory}</p>
                           <h2 className="py-3 text-2xl font-black leading-tight text-mainGray">{post.node.title}</h2>

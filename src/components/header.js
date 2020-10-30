@@ -6,7 +6,7 @@ import classnames from "classnames"
 
 const Header = () => {
   const GET_LINKS = gql`
-    query MyQuery {
+    query MenuQuery {
       menuItems {
         edges {
           node {
@@ -33,6 +33,12 @@ const Header = () => {
             altText
             sourceUrl(size: LARGE)
           }
+          socialMediaLink {
+            smIcon {
+              sourceUrl(size: LARGE)
+            }
+            smLink
+          }
         }
       }
     }
@@ -57,7 +63,7 @@ const Header = () => {
 
   return (
     <>
-      <div className="fixed top-0 left-0 z-50 w-full py-6 overflow-x-hidden bg-transparent text-mainGray lg:w-auto">
+      <div className="fixed top-0 left-0 z-50 w-full py-6 overflow-x-hidden bg-transparent text-mainGray lg:w-auto ">
         <div className="relative z-50 flex justify-between w-11/12 mx-auto lg:hidden">
           <div className="">
             <a href="/">
@@ -84,13 +90,25 @@ const Header = () => {
       </div>
       <div
         className={classnames(
-          "fixed top-0 left-0 right-0 z-40 w-screen sm:w-1/2 transition duration-500 ease-in-out h-screen py-6 flex lg:block bg-brandteal lg:bg-white text-mainGray lg:h-auto lg:w-full",
+          "fixed top-0 left-0 right-0 z-40 w-screen sm:w-1/2 transition duration-500 ease-in-out h-screen py-6 flex lg:block bg-brandteal lg:bg-white text-mainGray  lg:h-auto lg:w-full",
           { "left-full lg:left-0": !isOpen, "left-0 sm:left-1/2": isOpen }
         )}
-        style={{ transitionProperty: "left" }}
+        style={{ transitionProperty: "left", boxShadow: "0 3px 11px 0 rgba(193, 187, 187, 0.5)" }}
       >
+     
+      
+        
         <div className="flex justify-center w-11/12 pt-4 pb-6 mx-auto">
-          <img src={siteSettings.siteLogo.sourceUrl} alt="Setup Shop" />
+        <Link className="text-sm " to="/"><img src={siteSettings.siteLogo.sourceUrl} alt="Setup Shop" /></Link>
+        </div>
+        <div className="relative flex flex-row w-11/12 max-w-screen-xl mx-auto">
+        <div className="absolute left-0 flex flex-row">
+          {siteSettings.socialMediaLink.map((item, i) => {
+            
+            return(
+              <img key={i} className="mx-1" src={item.smIcon.sourceUrl} alt="social media" />
+            )
+          })}
         </div>
         <ul className="flex flex-col items-center justify-center w-11/12 max-w-screen-xl mx-auto text-mainGray lg:flex-row lg:relative">
           {data.menuItems.edges.map((item, key) => {
@@ -111,6 +129,7 @@ const Header = () => {
             )
           })}
         </ul>
+        </div>
       </div>
     </>
   )
