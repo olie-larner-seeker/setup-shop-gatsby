@@ -5,7 +5,7 @@ const uri = () => {
     return "http://localhost:8888/Setup_Shop/setup-shop-be/graphql";
   }
   if (window.location.hostname === "develop.dldoq5hxs3lte.amplifyapp.com") {
-    return "https://wordpress-458085-1446350.cloudwaysapps.com/graphql";
+    return "https://wordpress-458085-1569675.cloudwaysapps.com/graphql";
   }
 };
 

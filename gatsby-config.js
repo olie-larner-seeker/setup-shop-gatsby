@@ -53,13 +53,13 @@ module.exports = {
     {
       resolve: `gatsby-source-wordpress-experimental`,
       options: {
-        url: "http://localhost:8888/Setup_Shop/setup-shop-be/graphql",
+        url: "https://wordpress-458085-1569675.cloudwaysapps.com/graphql",
       },
     },
     {
       resolve: "gatsby-plugin-apollo",
       options: {
-        uri: "http://localhost:8888/Setup_Shop/setup-shop-be/graphql",
+        uri: "https://wordpress-458085-1569675.cloudwaysapps.com/graphql",
       },
     },
     `gatsby-plugin-next-seo`,
